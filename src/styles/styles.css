@@ -1,0 +1,282 @@
+body {
+  background-color: rgb(15, 15, 15);
+  user-select: none;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+}
+
+button {
+  color: white;
+}
+
+label {
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.App {
+  text-align: center;
+}
+
+/* Grid */
+
+.grid {
+  max-width: fit-content;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.square {
+  border: 1px solid white;
+  height: 25px;
+  width: 25px;
+}
+
+.square:hover {
+  scale: 120%;
+  background-color: rgb(30, 30, 30);
+  transition: 100ms;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  gap: 0px;
+}
+
+/* Nodes */
+
+.start-node,
+.start-node:hover {
+  background: transparent url("/public/images/play.svg") no-repeat center;
+  background-size: 20px;
+  background-color: rgb(15, 15, 15);
+  animation: node-create 0.5s forwards;
+}
+
+.finish-node,
+.finish-node:hover {
+  background: transparent url("/public/images/target.svg") no-repeat center;
+  background-size: 20px;
+  background-color: rgb(15, 15, 15);
+  animation: node-create 0.5s forwards;
+}
+
+.wall,
+.wall:hover {
+  background: transparent url("/public/images/wall.svg") no-repeat center;
+  background-size: 25px;
+  background-color: rgb(15, 15, 15);
+  animation: node-create 0.5s forwards;
+}
+
+/* Nav Bar */
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  gap: 20px;
+}
+
+.nav-section {
+  text-align: center;
+}
+
+/* Nav Buttons */
+
+.radio-button {
+  opacity: 0;
+  translate: 25px;
+  margin: 0;
+  z-index: -1;
+  cursor: pointer;
+}
+
+.radio-label,
+.button {
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: rgb(44, 44, 44);
+  border: none;
+  height: 27px;
+  margin: 0;
+}
+
+.radio-label {
+  background: linear-gradient(
+    to right,
+    rgb(60, 60, 255) 50%,
+    rgb(44, 44, 44) 50%
+  );
+  background-size: 200%;
+  background-position: right;
+}
+
+.selected {
+  animation: selector-change 0.5s forwards;
+}
+
+.button {
+  color: white;
+  margin-left: 20px;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(80, 80, 80);
+  transition: 800ms;
+}
+
+.find {
+  background-color: darkgreen;
+}
+
+.find:hover {
+  background-color: rgb(37, 165, 37);
+}
+
+/* DROPDOWN */
+
+.dropdown-button {
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  background-color: rgb(44, 44, 44);
+  height: 28px;
+  width: 240px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropdown-button-clicked {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.dropdown-button p {
+  margin: 5px;
+}
+
+.chosen-alg {
+  display: block;
+  text-align: center;
+}
+
+.down-arrow {
+  display: block;
+  text-align: right;
+  transform: translateY(-18px);
+}
+
+.dropdown {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position: relative;
+  background-color: rgb(26, 26, 26);
+  z-index: 9;
+  width: 200px;
+  height: 0;
+  transform: translateY(-31px);
+}
+
+.dropdown-item {
+  width: 80px;
+  list-style-type: none;
+  translate: 40px 15px;
+  text-align: left;
+  margin-top: 7px;
+}
+
+.dropdown-item:hover {
+  cursor: pointer;
+  transform: translateX(5px);
+  color: rgb(0, 255, 0);
+  transition: 100ms;
+}
+
+/* Pathing */
+
+.shortest-path {
+  background-color: rgb(0, 61, 0);
+  transition: 500ms;
+}
+
+.all-paths {
+  background-color: navy;
+  transition: 200ms;
+}
+
+/* Animation Classes */
+
+.drop-hide {
+  animation: dropdown-reverse 500ms forwards;
+}
+
+.drop-show {
+  animation: algorithm-dropdown 500ms forwards;
+}
+
+.item-show {
+  animation: list-appear 0.5s 1 forwards;
+}
+
+/* Animation Keyframes */
+
+@keyframes node-create {
+  0% {
+    background-size: 0%;
+  }
+  90% {
+    background-size: 100%;
+  }
+  100% {
+    background-size: 80%;
+  }
+}
+
+@keyframes selector-change {
+  0% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
+}
+
+@keyframes algorithm-dropdown {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 150px;
+  }
+}
+
+@keyframes dropdown-reverse {
+  0% {
+    height: 150px;
+  }
+  100% {
+    height: 0px;
+    display: hidden;
+  }
+}
+
+@keyframes list-appear {
+  from {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
